@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Xdomea Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        button {
+            margin: 4px;
+            padding: 6px 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 20px;
+            min-height: 10px;
+        }
+
+        li {
+            margin: 6px 0;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: grab;
+        }
+
+        .akte {
+            background: #e3f2fd;
+        }
+
+        .vorgang {
+            background: #e8f5e9;
+        }
+
+        .untervorgang {
+            background: #fff3e0;
+        }
+
+        .dokument {
+            background: #fce4ec;
+        }
+
+        .ghost {
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body>
+
+<h2>XDOMEA Generator</h2>
+
+<button onclick="addItem('akte')">+ Akte</button>
+<button onclick="addItem('vorgang')">+ Vorgang</button>
+<button onclick="addItem('untervorgang')">+ Untervorgang</button>
+<button onclick="addItem('dokument')">+ Dokument</button>
+
+<ul id="root"></ul>
+<button onclick="sendJsonToEndpoint()">Start Generator</button>
+
+<hr>
+<textarea id="xdomea" name="xdomea" rows="10" cols="60">
+      This is where the xdomea will be generated...
+</textarea>
+
+<hr>
+<button onclick="copyText()">Copy</button>
+<script>
+    let counters = {
+        akte: 1,
+        vorgang: 1,
+        untervorgang: 1,
+        dokument: 1
+    };
+
+    const root = document.getElementById('root');
+
+    // Root sortable
+    initializeSortable(root);
+
+    function addItem(type) {
+        const li = document.createElement('li');
+        li.className = type;
+        li.dataset.type = type;
+        li.innerHTML = `<strong>${capitalize(type)} ${counters[type]++}</strong>`;
+
+        const childList = document.createElement('ul');
+        li.appendChild(childList);
+
+        initializeSortable(childList);
+
+        root.appendChild(li);
+    }
+
+    function initializeSortable(el) {
+        Sortable.create(el, {
+            group: 'tree',   // all lists share same group
+            animation: 150,
+            ghostClass: 'ghost',
+            fallbackOnBody: true,
+            swapThreshold: 0.65
+        });
+    }
+
+    function capitalize(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    function sendJsonToEndpoint() {
+        var json = generateJson();
+        sendDataToServer(json);
+    }
+
+
+    async function sendDataToServer(jsonData) {
+        try {
+            const response = await fetch("http://localhost:8080/generatexdomea", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(jsonData),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status}`);
+            }
+
+            // Assuming your server returns XML as a string
+            const result = await response.text();
+            console.log("Server response:", result);
+            document.getElementById("xdomea").value = result;
+            return result;
+        } catch (err) {
+            console.error("Error sending data:", err);
+        }
+    }
+
+    function generateJson() {
+        function parseList(ul) {
+            const items = [];
+            ul.querySelectorAll(':scope > li').forEach(li => {
+                const obj = {
+                    type: li.dataset.type,
+                    label: li.querySelector('strong').textContent
+                };
+
+                const childUl = li.querySelector(':scope > ul');
+                if (childUl && childUl.children.length > 0) {
+                    obj.children = parseList(childUl);
+                }
+
+                items.push(obj);
+            });
+            return items;
+        }
+
+        return parseList(document.getElementById('root'));
+    }
+
+    function copyText() {
+        const textarea = document.getElementById("xdomea");
+        textarea.select();
+        textarea.setSelectionRange(0, 99999); // For mobile devices
+        document.execCommand("copy");
+        alert("xdomea copied to clipboard");
+    }
+
+</script>
+</body>
+</html>

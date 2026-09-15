@@ -1,0 +1,174 @@
+<DokumentOderDokumentMitSchriftstueck>
+    <Dokument>
+
+        <!-- [REQUIRED] Identifikation -->
+        <Identifikation>
+            <xdomeaUUID>c1c1c1c1-0000-0000-0000-000000000030</xdomeaUUID>
+        </Identifikation>
+
+        <!-- [OPTIONAL] AllgemeineMetadaten -->
+        <AllgemeineMetadaten>
+            <Betreff>Hauptdokument - Antragsbescheid</Betreff>
+        </AllgemeineMetadaten>
+
+        <!-- [OPTIONAL] FremdesGeschaeftszeichen -->
+        <!-- [OPTIONAL] Posteingangsdatum -->
+        <!-- [OPTIONAL] Postausgangsdatum -->
+        <!-- [OPTIONAL] DatumDesSchreibens -->
+        <!-- [OPTIONAL] Bezug -->
+        <!-- [OPTIONAL] Hier -->
+        <!-- [OPTIONAL] Bearbeiter -->
+        <!-- [OPTIONAL] Typ -->
+        <!-- [OPTIONAL] HistorienProtokollInformation -->
+        <!-- [OPTIONAL] InternerGeschaeftsgang -->
+        <!-- [OPTIONAL] Verweis -->
+        <!-- [OPTIONAL] Autor -->
+        <!-- [OPTIONAL] Leser -->
+        <!-- [OPTIONAL] WeitererKontakt -->
+        <!-- [OPTIONAL] AnwendungsspezifischeErweiterung(XML) -->
+
+        <!-- ========================================================
+             VERSION (VersionType) [OPTIONAL, 0..unbounded]
+             Wenn vorhanden: Nummer + Format sind REQUIRED
+             ======================================================== -->
+        <Version>
+            <!-- [REQUIRED] Versionsnummer -->
+            <Nummer>1.0</Nummer>
+
+            <!-- [REQUIRED] Format (FormatType, 1..unbounded) -->
+            <Format>
+                <!-- [REQUIRED] Name - Dateiformatcode (z.B. PRONOM) -->
+                <Name>
+                    <code listVersionID="20">fmt/276</code> <!-- PDF/A-1b -->
+                </Name>
+                <!-- [OPTIONAL] SonstigerName - nur wenn Name = "100" (Sonstiges) -->
+                <!-- [REQUIRED] Version des Dateiformats -->
+                <Version>1.4</Version>
+                <!-- [REQUIRED] Primaerdokument (PrimaerdokumentType) -->
+                <Primaerdokument>
+                    <!-- [REQUIRED] Dateiname (UUID-basiert, Pattern: UUID[_name][.ext]) -->
+                    <Dateiname>c1c1c1c1-0000-0000-0000-000000000030.pdf</Dateiname>
+                    <!-- [OPTIONAL] Originaler Dateiname aus dem Quellsystem -->
+                    <DateinameOriginal>Antragsbescheid.pdf</DateinameOriginal>
+                    <!-- [OPTIONAL] Ersteller der Datei -->
+                    <!-- <Ersteller>Max Mustermann</Ersteller> -->
+                    <!-- [OPTIONAL] Erstellungszeitpunkt der Datei -->
+                    <DatumUhrzeit>2026-05-20T09:30:00</DatumUhrzeit>
+                    <!-- [OPTIONAL] Signatur/Siegel -->
+                    <!-- <SignaturSiegel>
+                           <SignaturSiegelEingebettet>1</SignaturSiegelEingebettet>
+                         </SignaturSiegel> -->
+                    <!-- [OPTIONAL] Letzte Aenderung -->
+                    <!-- <ZeitpunktLetzteAenderung>2026-05-20T09:30:00</ZeitpunktLetzteAenderung> -->
+                    <!-- [OPTIONAL] Hash zur Integritaetspruefung -->
+                    <Hash>
+                        <Wert>e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</Wert>
+                        <!-- [OPTIONAL] Algorithmus -->
+                        <Algorithmus>
+                            <code listVersionID="1.0">SHA-256</code>
+                        </Algorithmus>
+                    </Hash>
+                </Primaerdokument>
+            </Format>
+        </Version>
+
+        <!-- ========================================================
+             ANLAGE 1: beispiel1.pdf
+             Typ: AnlageDokumentType [OPTIONAL, 0..unbounded]
+             ======================================================== -->
+        <Anlage>
+            <!-- [OPTIONAL] Anlagennummer -->
+            <Nummer>1</Nummer>
+            <!-- xs:choice: Dokument | DokumentMitSchriftstueck -->
+            <Dokument>
+                <!-- [REQUIRED] Identifikation -->
+                <Identifikation>
+                    <xdomeaUUID>a1a1a1a1-0000-0000-0000-000000000031</xdomeaUUID>
+                </Identifikation>
+                <!-- [OPTIONAL] AllgemeineMetadaten -->
+                <AllgemeineMetadaten>
+                    <Betreff>Anlage 1 - Kostenkalkulation</Betreff>
+                </AllgemeineMetadaten>
+                <!-- [OPTIONAL] Version -->
+                <Version>
+                    <!-- [REQUIRED] Nummer -->
+                    <Nummer>1.0</Nummer>
+                    <!-- [REQUIRED] Format -->
+                    <Format>
+                        <!-- [REQUIRED] Name -->
+                        <Name>
+                            <code listVersionID="20">fmt/276</code>
+                        </Name>
+                        <!-- [REQUIRED] Version -->
+                        <Version>1.4</Version>
+                        <!-- [REQUIRED] Primaerdokument -->
+                        <Primaerdokument>
+                            <!-- [REQUIRED] Dateiname -->
+                            <Dateiname>a1a1a1a1-0000-0000-0000-000000000031_beispiel1.pdf</Dateiname>
+                            <!-- [OPTIONAL] DateinameOriginal -->
+                            <DateinameOriginal>beispiel1.pdf</DateinameOriginal>
+                            <!-- [OPTIONAL] DatumUhrzeit -->
+                            <DatumUhrzeit>2026-05-18T14:00:00</DatumUhrzeit>
+                            <!-- [OPTIONAL] Hash -->
+                            <Hash>
+                                <Wert>abc123def456abc123def456abc123def456abc123def456abc123def456abc1</Wert>
+                                <Algorithmus>
+                                    <code listVersionID="1.0">SHA-256</code>
+                                </Algorithmus>
+                            </Hash>
+                        </Primaerdokument>
+                    </Format>
+                </Version>
+            </Dokument>
+        </Anlage>
+
+        <!-- ========================================================
+             ANLAGE 2: beispiel2.pdf
+             ======================================================== -->
+        <Anlage>
+            <!-- [OPTIONAL] Anlagennummer -->
+            <Nummer>2</Nummer>
+            <Dokument>
+                <!-- [REQUIRED] Identifikation -->
+                <Identifikation>
+                    <xdomeaUUID>a2a2a2a2-0000-0000-0000-000000000032</xdomeaUUID>
+                </Identifikation>
+                <!-- [OPTIONAL] AllgemeineMetadaten -->
+                <AllgemeineMetadaten>
+                    <Betreff>Anlage 2 - Lageplan</Betreff>
+                </AllgemeineMetadaten>
+                <!-- [OPTIONAL] Version -->
+                <Version>
+                    <!-- [REQUIRED] Nummer -->
+                    <Nummer>1.0</Nummer>
+                    <!-- [REQUIRED] Format -->
+                    <Format>
+                        <!-- [REQUIRED] Name -->
+                        <Name>
+                            <code listVersionID="20">fmt/276</code>
+                        </Name>
+                        <!-- [REQUIRED] Version -->
+                        <Version>1.4</Version>
+                        <!-- [REQUIRED] Primaerdokument -->
+                        <Primaerdokument>
+                            <!-- [REQUIRED] Dateiname -->
+                            <Dateiname>a2a2a2a2-0000-0000-0000-000000000032_beispiel2.pdf</Dateiname>
+                            <!-- [OPTIONAL] DateinameOriginal -->
+                            <DateinameOriginal>beispiel2.pdf</DateinameOriginal>
+                            <!-- [OPTIONAL] DatumUhrzeit -->
+                            <DatumUhrzeit>2026-05-19T11:00:00</DatumUhrzeit>
+                            <!-- [OPTIONAL] Hash -->
+                            <Hash>
+                                <Wert>def789abc012def789abc012def789abc012def789abc012def789abc012def7</Wert>
+                                <Algorithmus>
+                                    <code listVersionID="1.0">SHA-256</code>
+                                </Algorithmus>
+                            </Hash>
+                        </Primaerdokument>
+                    </Format>
+                </Version>
+            </Dokument>
+        </Anlage>
+
+    </Dokument>
+</DokumentOderDokumentMitSchriftstueck>

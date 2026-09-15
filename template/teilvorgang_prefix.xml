@@ -1,0 +1,11 @@
+<Teilvorgang>
+
+    <!-- [REQUIRED] Identifikation -->
+    <Identifikation>
+        <xdomeaUUID>c0c0c0c0-0000-0000-0000-000000000020</xdomeaUUID>
+    </Identifikation>
+
+    <!-- [OPTIONAL] AllgemeineMetadaten -->
+    <AllgemeineMetadaten>
+        <Betreff>Antrag Musterprojekt - Vorgang</Betreff>
+    </AllgemeineMetadaten>

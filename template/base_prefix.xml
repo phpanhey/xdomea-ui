@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FVDaten.SGOAblegen.0605
+        xmlns:xdomea="urn:xoev-de:xdomea:schema:4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:xoev-de:xdomea:schema:4.0.0 xdomea-Nachrichten-FachverfahrensdatenAustauschen.xsd"
+        produkt="MeinFachverfahren"
+        produkthersteller="Musterfirma GmbH"
+        produktversion="1.0.0"
+        standard="xdomea"
+        version="4.0.0">
+    <!--
+      Attribute auf Nachrichtenebene:
+        produkt             [ATTR-REQ]  Name des sendenden Produkts
+        produkthersteller   [ATTR-REQ]  Hersteller des Produkts
+        produktversion      [ATTR-OPT]  Version des Produkts
+        standard            [ATTR-REQ]  Fester Wert: "xdomea"
+        version             [ATTR-REQ]  Fester Wert: "4.0.0"
+        test                [ATTR-OPT]  Testkennzeichen (hier nicht gesetzt)
+    -->
+
+    <!-- ====================================================================
+         NACHRICHTENKOPF [REQUIRED]
+         ==================================================================== -->
+    <nachrichtenkopf>
+
+        <!-- [REQUIRED] Nachrichtentyp -->
+        <Nachrichtentyp>
+            <code listVersionID="1.0">0605</code>
+        </Nachrichtentyp>
+
+        <!-- [REQUIRED] Eindeutige ID dieser Nachricht -->
+        <NachrichtenUUID>a1b2c3d4-0000-0000-0000-000000000001</NachrichtenUUID>
+
+        <!-- [OPTIONAL] Erstellungszeitpunkt der Nachricht -->
+        <ErstellungszeitpunktNachricht>2026-05-26T10:00:00</ErstellungszeitpunktNachricht>
+
+        <!-- [OPTIONAL] Absendende Stelle -->
+        <AbsendendeStelle>
+            <name>Fachverfahren Musterbehörde</name>
+        </AbsendendeStelle>
+
+        <!-- [OPTIONAL] Empfangende Stelle -->
+        <EmpfangendeStelle>
+            <name>DMS Hub</name>
+        </EmpfangendeStelle>
+
+    </nachrichtenkopf>
+
+    <!-- [OPTIONAL] Empfangendes System (EmpfangendesSystem) -->
+
+    <!-- [OPTIONAL] Weiteres empfangendes System (WeiteresEmpfangendesSystem) -->
+
+    <!-- [REQUIRED] Soll eine Empfangsbestaetigung gesendet werden? -->
+    <Empfangsbestaetigung>true</Empfangsbestaetigung>
+
+    <!-- [REQUIRED] Soll eine Importbestaetigung gesendet werden? -->
+    <Importbestaetigung>true</Importbestaetigung>
+
+    <!-- [REQUIRED] Kennung des erstellenden Systems -->
+    <Erstellerkennung>FV-MUSTER-001</Erstellerkennung>
+
+    <!-- [OPTIONAL] Rolle des Erstellers (ErstellerRolle) -->
+
+    <!-- [REQUIRED] Stapelkennung (Bündelung mehrerer SGOs) -->
+    <Stapel>STAPEL-2026-001</Stapel>
+
+    <!-- [OPTIONAL] Stapellaenge (Anzahl SGOs im Stapel) -->
+
+    <!-- [OPTIONAL] DMS-Session-ID -->
+
+    <!-- ====================================================================
+         SCHRIFTGUTOBJEKT ZUM ABLEGEN [REQUIRED, 1..unbounded]
+         Typ: SchriftgutobjektZumAblegenType
+         ==================================================================== -->
+    <SchriftgutobjektZumAblegen>
+
+        <!-- [OPTIONAL] NummerImStapel - Position dieses SGOs im Stapel -->
+        <NummerImStapel>1</NummerImStapel>
+
+        <!-- [REQUIRED] ID des Objekts im Fachverfahren -->
+        <FachverfahrenObjektID>FV-2026-00042</FachverfahrenObjektID>
+
+        <!-- [OPTIONAL] ID des übergeordneten SGOs im DMS (falls bereits vorhanden) -->
+        <!-- <IDUebergeordnetesSchriftgutobjektDMS>DMS-AKTE-001</IDUebergeordnetesSchriftgutobjektDMS> -->
+
+        <!-- [OPTIONAL] Ablageort im DMS -->
+        <!-- <Ablageort>/archiv/2026/musterprojekt</Ablageort> -->
+
+        <!-- [REQUIRED] Schriftgutobjekt (xs:choice: Akte | Vorgang | DokumentOderDokumentMitSchriftstueck) -->
+        <Schriftgutobjekt>

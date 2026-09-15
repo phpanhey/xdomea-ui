@@ -1,0 +1,35 @@
+<Akte>
+
+    <!-- [REQUIRED] Identifikation -->
+    <Identifikation>
+        <!-- [REQUIRED] xdomeaUUID -->
+        <xdomeaUUID>b0b0b0b0-0000-0000-0000-000000000010</xdomeaUUID>
+        <!-- [OPTIONAL] NummerImUebergeordnetenContainer -->
+    </Identifikation>
+
+    <!-- [OPTIONAL] AllgemeineMetadaten - alle Unterfelder sind optional -->
+    <AllgemeineMetadaten>
+        <!-- [OPTIONAL] Betreff -->
+        <Betreff>Musterprojekt 2026 - Akte</Betreff>
+        <!-- [OPTIONAL] Kennzeichen (Aktenzeichen) -->
+        <Kennzeichen>AZ-2026-001</Kennzeichen>
+        <!-- [OPTIONAL] weitere: Federfuehrung, Aktenfuehrung, Geheimhaltung,
+             Bemerkung, Medium, Aktenplaneinheit, ZeitpunktLetzteAenderung,
+             Strukturpfad, Datenschutzstufe, DatenschutzstufeCode -->
+    </AllgemeineMetadaten>
+
+    <!-- [OPTIONAL] Aussonderungsmetadaten -->
+    <!-- [OPTIONAL] Standort -->
+    <!-- [OPTIONAL] Typ -->
+    <!-- [OPTIONAL] Laufzeit -->
+    <!-- [OPTIONAL] HistorienProtokollInformation -->
+    <!-- [OPTIONAL] InternerGeschaeftsgang -->
+    <!-- [OPTIONAL] Verweis -->
+    <!-- [OPTIONAL] Kontakt -->
+    <!-- [OPTIONAL] ZdA (zu den Akten) -->
+    <!-- [OPTIONAL] ZdADatum -->
+    <!-- [OPTIONAL] AnwendungsspezifischeErweiterung -->
+    <!-- [OPTIONAL] AnwendungsspezifischeErweiterungXML -->
+
+    <!-- [OPTIONAL] Akteninhalt - enthält Vorgänge, Dokumente, Teilakten -->
+    <Akteninhalt>
