@@ -1,0 +1,15 @@
+services:
+  xdomea-ui:
+    container_name: xdomea-ui
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    expose:
+      - "8080"
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
